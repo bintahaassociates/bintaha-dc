@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taha Mobeen Bhutta - Bin Taha Associates</title>
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold-primary: #e5c365;
+      --gold-light: #fff5c0;
+      --gold-dark: #8c671b;
+      --gold-foil: linear-gradient(135deg, #b8860b 0%, #ffd700 25%, #d4af37 50%, #fff2a3 75%, #996515 100%);
+      --gold-border: linear-gradient(145deg, rgba(255, 242, 163, 0.8), rgba(184, 134, 11, 0.4), rgba(255, 215, 0, 0.7));
+      --bg-midnight: #05080f;
+      --card-bg: linear-gradient(180deg, rgba(13, 19, 33, 0.96) 0%, rgba(6, 10, 18, 0.98) 100%);
+      --glass-surface: rgba(255, 255, 255, 0.035);
+      --glass-border: rgba(229, 195, 101, 0.22);
+      --gold-glow: rgba(212, 175, 55, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-midnight);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(30, 58, 110, 0.35) 0%, transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(184, 134, 11, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 0% 100%, rgba(15, 23, 42, 0.4) 0%, transparent 50%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 12px;
+    }
+
+    /* 3D Master Wrapper */
+    .card-wrapper {
+      width: 100%;
+      max-width: 440px;
+      border-radius: 36px;
+      padding: 2px;
+      background: var(--gold-border);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9),
+                  0 0 30px rgba(212, 175, 55, 0.25),
+                  inset 0 0 15px rgba(255, 245, 192, 0.25);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+    }
+
+    .card-wrapper:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.95),
+                  0 0 45px rgba(212, 175, 55, 0.45);
+    }
+
+    /* Main Digital Card */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-radius: 34px;
+      padding: 34px 22px 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Metallic Shimmer Effect */
+    .card::after {
+      content: '';
+      position: absolute;
+      top: -150%;
+      left: -150%;
+      width: 400%;
+      height: 400%;
+      background: linear-gradient(
+        45deg,
+        transparent 45%,
+        rgba(255, 245, 192, 0.06) 50%,
+        transparent 55%
+      );
+      transform: rotate(35deg);
+      pointer-events: none;
+      animation: metallicShimmer 9s infinite linear;
+    }
+
+    @keyframes metallicShimmer {
+      0% { transform: translateY(-40%) rotate(35deg); }
+      100% { transform: translateY(40%) rotate(35deg); }
+    }
+
+    /* 3D Crest Badge Frame */
+    .logo-frame-wrapper {
+      position: relative;
+      width: 155px;
+      height: 155px;
+      margin: 0 auto 16px;
+    }
+
+    .logo-frame-outer {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--gold-foil);
+      padding: 3px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7),
+                  0 0 20px var(--gold-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-frame-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #090e18;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    .logo-frame-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.85)) contrast(1.1);
+    }
+
+    /* Identity & Metallic Gold Typography */
+    .user-name {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      background: var(--gold-foil);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 3px;
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.6));
+    }
+
+    .brand-title {
+      font-family: 'Cinzel', serif;
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: var(--gold-foil);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 4px;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+    }
+
+    .brand-tagline {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #94a3b8;
+      margin-bottom: 22px;
+    }
+
+    /* Primary Action Buttons */
+    .primary-actions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .action-btn {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.35));
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 12px 4px;
+      text-decoration: none;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .action-btn .btn-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(229, 195, 101, 0.12);
+      border: 1px solid rgba(229, 195, 101, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .action-btn i {
+      font-size: 16px;
+      color: var(--gold-primary);
+    }
+
+    .action-btn:hover {
+      background: var(--gold-foil);
+      border-color: transparent;
+      color: #05080f;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(184, 134, 11, 0.45);
+    }
+
+    .action-btn:hover .btn-icon {
+      background: rgba(5, 8, 15, 0.15);
+      border-color: transparent;
+    }
+
+    .action-btn:hover i {
+      color: #05080f;
+    }
+
+    /* Complete Social Media Grid */
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #64748b;
+      margin-bottom: 12px;
+      text-align: left;
+      padding-left: 4px;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .social-icon-btn {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      background: var(--glass-surface);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon-btn:hover {
+      background: var(--gold-foil);
+      color: #05080f;
+      border-color: transparent;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Multimedia / Portals */
+    .multimedia-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 20px;
+    }
+
+    .portal-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: var(--glass-surface);
+      border: 1px solid var(--glass-border);
+      color: #f8fafc;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      transition: all 0.3s ease;
+    }
+
+    .portal-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .portal-left i {
+      font-size: 16px;
+      color: var(--gold-primary);
+    }
+
+    .portal-link:hover {
+      background: rgba(229, 195, 101, 0.1);
+      border-color: var(--gold-primary);
+      transform: translateX(4px);
+    }
+
+    /* QR Code Card */
+    .qr-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(229, 195, 101, 0.05), rgba(0, 0, 0, 0.45));
+      border: 1px solid var(--glass-border);
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .qr-frame {
+      width: 72px;
+      height: 72px;
+      background: #ffffff;
+      padding: 5px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      flex-shrink: 0;
+    }
+
+    .qr-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .qr-details h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 2px;
+    }
+
+    .qr-details p {
+      font-size: 11px;
+      color: #94a3b8;
+      line-height: 1.35;
+    }
+
+    /* Save Contact Button */
+    .btn-save-vcard {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      border: none;
+      background: var(--gold-foil);
+      color: #05080f;
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 8px 24px rgba(184, 134, 11, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn-save-vcard:hover {
+      filter: brightness(1.1);
+      transform: scale(1.02);
+      box-shadow: 0 12px 30px rgba(184, 134, 11, 0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-wrapper">
+    <div class="card">
+
+      <!-- Exact Golden Eagle Shield Logo -->
+      <div class="logo-frame-wrapper">
+        <div class="logo-frame-outer">
+          <div class="logo-frame-inner">
+            <img id="eagleLogo" src="logo.png.png" alt="Bin Taha Associate Logo" onerror="loadBackupLogos(this)" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Identity & Branding (Golden Name & Title) -->
+      <h2 class="user-name">Taha Mobeen Bhutta</h2>
+      <h1 class="brand-title">Bin Taha Associates</h1>
+      <p class="brand-tagline">Real Estate & Civil Construction</p>
+
+      <!-- Primary Action Buttons (03219404812) -->
+      <div class="primary-actions">
+        <a href="tel:+923219404812" class="action-btn">
+          <div class="btn-icon"><i class="fa-solid fa-phone"></i></div>
+          <span>Call</span>
+        </a>
+        <a href="https://wa.me/923219404812" target="_blank" class="action-btn">
+          <div class="btn-icon"><i class="fa-brands fa-whatsapp"></i></div>
+          <span>WhatsApp</span>
+        </a>
+        <a href="mailto:tahamubeenbhutta1@gmail.com" class="action-btn">
+          <div class="btn-icon"><i class="fa-solid fa-envelope"></i></div>
+          <span>Email</span>
+        </a>
+        <a href="https://bintahaassociates.netlify.app/" target="_blank" class="action-btn">
+          <div class="btn-icon"><i class="fa-solid fa-globe"></i></div>
+          <span>Portal</span>
+        </a>
+      </div>
+
+      <!-- Official Social Networks -->
+      <div class="section-label">Official Social Networks</div>
+      <div class="social-grid">
+        <a href="https://facebook.com" target="_blank" class="social-icon-btn" title="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" class="social-icon-btn" title="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://youtube.com" target="_blank" class="social-icon-btn" title="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://tiktok.com" target="_blank" class="social-icon-btn" title="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+        <a href="https://x.com" target="_blank" class="social-icon-btn" title="X (Twitter)">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://pinterest.com" target="_blank" class="social-icon-btn" title="Pinterest">
+          <i class="fa-brands fa-pinterest-p"></i>
+        </a>
+      </div>
+
+      <!-- Portals & Multimedia -->
+      <div class="multimedia-list">
+        <a href="https://bintahaassociates.netlify.app/" target="_blank" class="portal-link">
+          <div class="portal-left">
+            <i class="fa-solid fa-calculator"></i>
+            <span>Civil Construction Calculator</span>
+          </div>
+          <i class="fa-solid fa-chevron-right" style="font-size: 11px; color: #64748b;"></i>
+        </a>
+
+        <a href="https://maps.google.com" target="_blank" class="portal-link">
+          <div class="portal-left">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Head Office Navigation</span>
+          </div>
+          <i class="fa-solid fa-chevron-right" style="font-size: 11px; color: #64748b;"></i>
+        </a>
+      </div>
+
+      <!-- Dynamic QR Code -->
+      <div class="qr-card">
+        <div class="qr-frame">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://bintahaassociates.netlify.app/&color=05080f" alt="Scan Card QR" />
+        </div>
+        <div class="qr-details">
+          <h4>Scan & Connect</h4>
+          <p>Scan to immediately explore listings, cost calculators and corporate portfolio.</p>
+        </div>
+      </div>
+
+      <!-- Save Contact (.vcf) -->
+      <button class="btn-save-vcard" onclick="saveVCard()">
+        <i class="fa-solid fa-address-book"></i> Save Contact (.vcf)
+      </button>
+
+    </div>
+  </div>
+
+  <script>
+    // Fallback handler if image is saved as logo.png, logo.png.png, or 1785795993842_2.jpg
+    let fallbackIndex = 0;
+    const backupPaths = ['logo.png.png', 'logo.png', '1785795993842_2.jpg', '1785795993842.jpg'];
+
+    function loadBackupLogos(imgElement) {
+      if (fallbackIndex < backupPaths.length) {
+        imgElement.src = backupPaths[fallbackIndex];
+        fallbackIndex++;
+      }
+    }
+
+    function saveVCard() {
+      const vCardData = 
+`BEGIN:VCARD
+VERSION:3.0
+N:Bhutta;Taha;Mobeen;;
+FN:Taha Mobeen Bhutta
+ORG:Bin Taha Associates
+TITLE:Principal Executive - Real Estate & Civil Construction
+TEL;TYPE=CELL,VOICE:+923219404812
+TEL;TYPE=WHATSAPP,VOICE:+923219404812
+EMAIL;TYPE=PREF,INTERNET:tahamubeenbhutta1@gmail.com
+URL:https://bintahaassociates.netlify.app/
+NOTE:Bin Taha Associates - Premium Real Estate, Civil Construction & Advisory Services
+END:VCARD`;
+
+      const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const downloadLink = document.createElement('a');
+      downloadLink.href = url;
+      downloadLink.setAttribute('download', 'Taha_Mobeen_Bhutta_Bin_Taha_Associates.vcf');
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
+  </script>
+</body>
+</html>
