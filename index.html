@@ -3,112 +3,161 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Taha Mobeen Bhutta - Bin Taha Associates</title>
+  <title>Taha Mobeen Bhutta - Bin Taha Associates | Official Digital Card</title>
   
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --gold-primary: #e5c365;
-      --gold-light: #fff5c0;
-      --gold-dark: #8c671b;
-      --gold-foil: linear-gradient(135deg, #b8860b 0%, #ffd700 25%, #d4af37 50%, #fff2a3 75%, #996515 100%);
-      --gold-border: linear-gradient(145deg, rgba(255, 242, 163, 0.8), rgba(184, 134, 11, 0.4), rgba(255, 215, 0, 0.7));
-      --bg-midnight: #05080f;
-      --card-bg: linear-gradient(180deg, rgba(13, 19, 33, 0.96) 0%, rgba(6, 10, 18, 0.98) 100%);
-      --glass-surface: rgba(255, 255, 255, 0.035);
-      --glass-border: rgba(229, 195, 101, 0.22);
-      --gold-glow: rgba(212, 175, 55, 0.35);
+      --gold-primary: #f2c94c;
+      --gold-light: #fff3b0;
+      --gold-dark: #b8860b;
+      --gold-foil: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+      --card-bg: rgba(6, 10, 20, 0.88);
+      --glass-border: rgba(242, 201, 76, 0.35);
+      --neon-glow: 0 0 60px rgba(212, 175, 55, 0.3);
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
 
     body {
-      background-color: var(--bg-midnight);
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(30, 58, 110, 0.35) 0%, transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(184, 134, 11, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 0% 100%, rgba(15, 23, 42, 0.4) 0%, transparent 50%);
+      background-color: #030712;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 24px 12px;
-    }
-
-    /* 3D Master Wrapper */
-    .card-wrapper {
-      width: 100%;
-      max-width: 440px;
-      border-radius: 36px;
-      padding: 2px;
-      background: var(--gold-border);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9),
-                  0 0 30px rgba(212, 175, 55, 0.25),
-                  inset 0 0 15px rgba(255, 245, 192, 0.25);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      padding: 24px 14px;
+      overflow-x: hidden;
       position: relative;
     }
 
-    .card-wrapper:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.95),
-                  0 0 45px rgba(212, 175, 55, 0.45);
+    /* Outer Moving Background Shapes */
+    .bg-animated-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 30%, #0c152a 0%, #030712 100%);
     }
 
-    /* Main Digital Card */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.25;
+      animation: floatOrbs 12s infinite alternate ease-in-out;
+    }
+    .orb-1 { width: 300px; height: 300px; background: #f2c94c; top: -10%; left: -10%; }
+    .orb-2 { width: 350px; height: 350px; background: #1e3a8a; bottom: -10%; right: -10%; animation-delay: -4s; }
+
+    @keyframes floatOrbs {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 50px) scale(1.15); }
+    }
+
+    .bg-architecture-shade {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.07;
+      mix-blend-mode: luminosity;
+      animation: subtleZoom 25s infinite alternate ease-in-out;
+    }
+
+    @keyframes subtleZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.08); }
+    }
+
+    .golden-text {
+      background: var(--gold-foil);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Card Wrapper */
+    .card-wrapper {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 38px;
+      padding: 2.5px;
+      background: linear-gradient(145deg, rgba(242, 201, 76, 0.85), rgba(30, 41, 59, 0.4), rgba(242, 201, 76, 0.6));
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.95), var(--neon-glow);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-wrapper:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 45px 100px rgba(0, 0, 0, 0.98), 0 0 80px rgba(242, 201, 76, 0.4);
+    }
+
+    /* Card Body with INNER MOVING DISPLAY (Animated Grid & Light Flow) */
     .card {
       background: var(--card-bg);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      border-radius: 34px;
-      padding: 34px 22px 28px;
+      backdrop-filter: blur(35px);
+      -webkit-backdrop-filter: blur(35px);
+      border-radius: 36px;
+      padding: 36px 24px 30px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
 
-    /* Metallic Shimmer Effect */
-    .card::after {
+    /* Inner Moving Background Display Effect */
+    .card::before {
       content: '';
       position: absolute;
-      top: -150%;
-      left: -150%;
-      width: 400%;
-      height: 400%;
-      background: linear-gradient(
-        45deg,
-        transparent 45%,
-        rgba(255, 245, 192, 0.06) 50%,
-        transparent 55%
-      );
-      transform: rotate(35deg);
+      inset: 0;
+      background-image: linear-gradient(rgba(242, 201, 76, 0.03) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(242, 201, 76, 0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      animation: gridMove 20s linear infinite;
+      z-index: 0;
       pointer-events: none;
-      animation: metallicShimmer 9s infinite linear;
     }
 
-    @keyframes metallicShimmer {
-      0% { transform: translateY(-40%) rotate(35deg); }
-      100% { transform: translateY(40%) rotate(35deg); }
+    @keyframes gridMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 30px 30px; }
     }
 
-    /* 3D Crest Badge Frame */
+    /* Make sure card contents stay above the moving grid */
+    .card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* 3D Crest Badge Frame with Eagle Animation */
+    @keyframes eaglePulse {
+      0% { filter: drop-shadow(0 0 10px rgba(242, 201, 76, 0.4)); }
+      50% { filter: drop-shadow(0 0 25px rgba(242, 201, 76, 0.9)); }
+      100% { filter: drop-shadow(0 0 10px rgba(242, 201, 76, 0.4)); }
+    }
+
     .logo-frame-wrapper {
       position: relative;
-      width: 155px;
-      height: 155px;
-      margin: 0 auto 16px;
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 18px;
+      animation: eaglePulse 4s infinite ease-in-out;
     }
 
     .logo-frame-outer {
@@ -117,8 +166,7 @@
       border-radius: 50%;
       background: var(--gold-foil);
       padding: 3px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7),
-                  0 0 20px var(--gold-glow);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(242, 201, 76, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -128,7 +176,7 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      background: #090e18;
+      background: #060913;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -140,32 +188,25 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.85)) contrast(1.1);
+      filter: drop-shadow(0 5px 12px rgba(0,0,0,0.9)) contrast(1.15);
     }
 
-    /* Identity & Metallic Gold Typography */
+    /* Typography */
     .user-name {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      background: var(--gold-foil);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 3px;
-      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.6));
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      margin-bottom: 4px;
     }
 
     .brand-title {
       font-family: 'Cinzel', serif;
-      font-size: 23px;
-      font-weight: 900;
-      letter-spacing: 2px;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      background: var(--gold-foil);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 4px;
-      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+      margin-bottom: 6px;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
     }
 
     .brand-tagline {
@@ -173,8 +214,7 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 3px;
-      color: #94a3b8;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
     }
 
     /* Primary Action Buttons */
@@ -182,16 +222,15 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
     }
 
     .action-btn {
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.35));
+      background: rgba(15, 23, 42, 0.7);
       border: 1px solid var(--glass-border);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 12px 4px;
       text-decoration: none;
-      color: #ffffff;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -199,15 +238,15 @@
       font-size: 11px;
       font-weight: 600;
       transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }
 
     .action-btn .btn-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: rgba(229, 195, 101, 0.12);
-      border: 1px solid rgba(229, 195, 101, 0.3);
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: rgba(242, 201, 76, 0.1);
+      border: 1px solid rgba(242, 201, 76, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -219,30 +258,35 @@
       color: var(--gold-primary);
     }
 
+    .action-btn span {
+      background: var(--gold-foil);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     .action-btn:hover {
       background: var(--gold-foil);
       border-color: transparent;
-      color: #05080f;
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(184, 134, 11, 0.45);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(242, 201, 76, 0.4);
+    }
+
+    .action-btn:hover span, .action-btn:hover i {
+      -webkit-text-fill-color: #030712;
+      color: #030712;
     }
 
     .action-btn:hover .btn-icon {
-      background: rgba(5, 8, 15, 0.15);
+      background: rgba(3, 7, 18, 0.15);
       border-color: transparent;
     }
 
-    .action-btn:hover i {
-      color: #05080f;
-    }
-
-    /* Complete Social Media Grid */
+    /* Social Media Grid */
     .section-label {
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #64748b;
+      letter-spacing: 2.5px;
       margin-bottom: 12px;
       text-align: left;
       padding-left: 4px;
@@ -252,53 +296,58 @@
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       gap: 8px;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
     }
 
     .social-icon-btn {
       width: 100%;
       aspect-ratio: 1;
-      border-radius: 12px;
-      background: var(--glass-surface);
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.7);
       border: 1px solid var(--glass-border);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #cbd5e1;
       text-decoration: none;
-      font-size: 16px;
-      transition: all 0.3s ease;
+      font-size: 15px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .social-icon-btn i {
+      color: var(--gold-primary);
+      transition: color 0.3s ease;
     }
 
     .social-icon-btn:hover {
       background: var(--gold-foil);
-      color: #05080f;
       border-color: transparent;
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+      transform: translateY(-4px) scale(1.08);
+      box-shadow: 0 8px 20px rgba(242, 201, 76, 0.35);
     }
 
-    /* Multimedia / Portals */
+    .social-icon-btn:hover i {
+      color: #030712;
+    }
+
+    /* Modern Portals List */
     .multimedia-list {
       display: flex;
       flex-direction: column;
-      gap: 9px;
-      margin-bottom: 20px;
+      gap: 10px;
+      margin-bottom: 22px;
     }
 
     .portal-link {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 16px;
-      border-radius: 14px;
-      background: var(--glass-surface);
+      padding: 13px 18px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.7);
       border: 1px solid var(--glass-border);
-      color: #f8fafc;
       text-decoration: none;
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.3px;
       transition: all 0.3s ease;
     }
 
@@ -313,10 +362,16 @@
       color: var(--gold-primary);
     }
 
+    .portal-left span {
+      background: var(--gold-foil);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     .portal-link:hover {
-      background: rgba(229, 195, 101, 0.1);
+      background: rgba(242, 201, 76, 0.08);
       border-color: var(--gold-primary);
-      transform: translateX(4px);
+      transform: translateX(5px);
     }
 
     /* QR Code Card */
@@ -324,24 +379,24 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 13px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(229, 195, 101, 0.05), rgba(0, 0, 0, 0.45));
+      padding: 14px;
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.85);
       border: 1px solid var(--glass-border);
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       text-align: left;
     }
 
     .qr-frame {
-      width: 72px;
-      height: 72px;
+      width: 70px;
+      height: 70px;
       background: #ffffff;
       padding: 5px;
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
       flex-shrink: 0;
     }
 
@@ -354,24 +409,24 @@
     .qr-details h4 {
       font-size: 13px;
       font-weight: 700;
-      color: var(--gold-light);
       margin-bottom: 2px;
     }
 
     .qr-details p {
       font-size: 11px;
-      color: #94a3b8;
-      line-height: 1.35;
+      color: var(--gold-primary);
+      opacity: 0.85;
+      line-height: 1.4;
     }
 
     /* Save Contact Button */
     .btn-save-vcard {
       width: 100%;
-      padding: 14px;
-      border-radius: 14px;
+      padding: 15px;
+      border-radius: 16px;
       border: none;
       background: var(--gold-foil);
-      color: #05080f;
+      color: #030712;
       font-family: 'Cinzel', serif;
       font-size: 13px;
       font-weight: 800;
@@ -382,18 +437,25 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      box-shadow: 0 8px 24px rgba(184, 134, 11, 0.4);
+      box-shadow: 0 10px 30px rgba(184, 134, 11, 0.45);
       transition: all 0.3s ease;
     }
 
     .btn-save-vcard:hover {
-      filter: brightness(1.1);
-      transform: scale(1.02);
-      box-shadow: 0 12px 30px rgba(184, 134, 11, 0.6);
+      filter: brightness(1.12);
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 15px 35px rgba(242, 201, 76, 0.6);
     }
   </style>
 </head>
 <body>
+
+  <!-- Moving Background Shapes & Architectural Shade -->
+  <div class="bg-animated-canvas">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="bg-architecture-shade"></div>
+  </div>
 
   <div class="card-wrapper">
     <div class="card">
@@ -402,38 +464,38 @@
       <div class="logo-frame-wrapper">
         <div class="logo-frame-outer">
           <div class="logo-frame-inner">
-            <img id="eagleLogo" src="logo.png.png" alt="Bin Taha Associate Logo" onerror="loadBackupLogos(this)" />
+            <img id="eagleLogo" src="logo.png" alt="Bin Taha Associates Logo" onerror="loadBackupLogos(this)" />
           </div>
         </div>
       </div>
 
-      <!-- Identity & Branding (Golden Name & Title) -->
-      <h2 class="user-name">Taha Mobeen Bhutta</h2>
-      <h1 class="brand-title">Bin Taha Associates</h1>
-      <p class="brand-tagline">Real Estate & Civil Construction</p>
+      <!-- Identity & Branding (Uniform Gold) -->
+      <h2 class="user-name golden-text">Taha Mobeen Bhutta</h2>
+      <h1 class="brand-title golden-text">Bin Taha Associates</h1>
+      <p class="brand-tagline golden-text">Real Estate & Civil Construction</p>
 
-      <!-- Primary Action Buttons (03219404812) -->
+      <!-- Primary Action Buttons -->
       <div class="primary-actions">
         <a href="tel:+923219404812" class="action-btn">
           <div class="btn-icon"><i class="fa-solid fa-phone"></i></div>
           <span>Call</span>
         </a>
-        <a href="https://wa.me/923219404812" target="_blank" class="action-btn">
+        <a href="https://wa.me/923219404812?text=Hello%20CEO%20Taha%20Mobeen,%20I%20am%20connecting%20via%20your%20digital%20card." target="_blank" class="action-btn">
           <div class="btn-icon"><i class="fa-brands fa-whatsapp"></i></div>
           <span>WhatsApp</span>
         </a>
-        <a href="mailto:tahamubeenbhutta1@gmail.com" class="action-btn">
+        <a href="mailto:bintahacrm@gmail.com" class="action-btn">
           <div class="btn-icon"><i class="fa-solid fa-envelope"></i></div>
           <span>Email</span>
         </a>
-        <a href="https://bintahaassociates.netlify.app/" target="_blank" class="action-btn">
+        <a href="https://bintahaassociates.github.io/bintaha-main/" target="_blank" class="action-btn">
           <div class="btn-icon"><i class="fa-solid fa-globe"></i></div>
           <span>Portal</span>
         </a>
       </div>
 
       <!-- Official Social Networks -->
-      <div class="section-label">Official Social Networks</div>
+      <div class="section-label golden-text">Official Social Networks</div>
       <div class="social-grid">
         <a href="https://facebook.com" target="_blank" class="social-icon-btn" title="Facebook">
           <i class="fa-brands fa-facebook-f"></i>
@@ -457,30 +519,30 @@
 
       <!-- Portals & Multimedia -->
       <div class="multimedia-list">
-        <a href="https://bintahaassociates.netlify.app/" target="_blank" class="portal-link">
+        <a href="https://bintahaassociates.github.io/bintaha-main/services.html" target="_blank" class="portal-link">
           <div class="portal-left">
             <i class="fa-solid fa-calculator"></i>
-            <span>Civil Construction Calculator</span>
+            <span>Civil Construction & CAD Hub</span>
           </div>
-          <i class="fa-solid fa-chevron-right" style="font-size: 11px; color: #64748b;"></i>
+          <i class="fa-solid fa-chevron-right golden-text" style="font-size: 11px;"></i>
         </a>
 
-        <a href="https://maps.google.com" target="_blank" class="portal-link">
+        <a href="https://bintahaassociates.github.io/bintaha-main/properties.html" target="_blank" class="portal-link">
           <div class="portal-left">
-            <i class="fa-solid fa-location-dot"></i>
-            <span>Head Office Navigation</span>
+            <i class="fa-solid fa-building"></i>
+            <span>Properties & Flagship Listings</span>
           </div>
-          <i class="fa-solid fa-chevron-right" style="font-size: 11px; color: #64748b;"></i>
+          <i class="fa-solid fa-chevron-right golden-text" style="font-size: 11px;"></i>
         </a>
       </div>
 
       <!-- Dynamic QR Code -->
       <div class="qr-card">
         <div class="qr-frame">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://bintahaassociates.netlify.app/&color=05080f" alt="Scan Card QR" />
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://bintahaassociates.github.io/bintaha-main/&color=05080f" alt="Scan Card QR" />
         </div>
         <div class="qr-details">
-          <h4>Scan & Connect</h4>
+          <h4 class="golden-text">Scan & Connect</h4>
           <p>Scan to immediately explore listings, cost calculators and corporate portfolio.</p>
         </div>
       </div>
@@ -494,9 +556,8 @@
   </div>
 
   <script>
-    // Fallback handler if image is saved as logo.png, logo.png.png, or 1785795993842_2.jpg
     let fallbackIndex = 0;
-    const backupPaths = ['logo.png.png', 'logo.png', '1785795993842_2.jpg', '1785795993842.jpg'];
+    const backupPaths = ['logo.png', 'logo.png.png', '1785795993842_2.jpg', '1785795993842.jpg'];
 
     function loadBackupLogos(imgElement) {
       if (fallbackIndex < backupPaths.length) {
@@ -512,12 +573,12 @@ VERSION:3.0
 N:Bhutta;Taha;Mobeen;;
 FN:Taha Mobeen Bhutta
 ORG:Bin Taha Associates
-TITLE:Principal Executive - Real Estate & Civil Construction
+TITLE:Chief Executive Officer - Real Estate & Civil Construction
 TEL;TYPE=CELL,VOICE:+923219404812
 TEL;TYPE=WHATSAPP,VOICE:+923219404812
-EMAIL;TYPE=PREF,INTERNET:tahamubeenbhutta1@gmail.com
-URL:https://bintahaassociates.netlify.app/
-NOTE:Bin Taha Associates - Premium Real Estate, Civil Construction & Advisory Services
+EMAIL;TYPE=PREF,INTERNET:bintahacrm@gmail.com
+URL:https://bintahaassociates.github.io/bintaha-main/
+NOTE:Bin Taha Associates - Premium Real Estate, Civil Construction & Advisory Services, Lahore
 END:VCARD`;
 
       const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8;' });
