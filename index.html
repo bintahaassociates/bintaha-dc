@@ -18,7 +18,7 @@
       --gold-light: #fff3b0;
       --gold-dark: #b8860b;
       --gold-foil: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
-      --card-bg: rgba(6, 10, 20, 0.88);
+      --card-bg: rgba(6, 10, 20, 0.92);
       --glass-border: rgba(242, 201, 76, 0.35);
       --neon-glow: 0 0 60px rgba(212, 175, 55, 0.3);
     }
@@ -109,7 +109,7 @@
       box-shadow: 0 45px 100px rgba(0, 0, 0, 0.98), 0 0 80px rgba(242, 201, 76, 0.4);
     }
 
-    /* Card Body with INNER MOVING DISPLAY (Animated Grid & Light Flow) */
+    /* Card Body */
     .card {
       background: var(--card-bg);
       backdrop-filter: blur(35px);
@@ -121,13 +121,12 @@
       overflow: hidden;
     }
 
-    /* Inner Moving Background Display Effect */
     .card::before {
       content: '';
       position: absolute;
       inset: 0;
       background-image: linear-gradient(rgba(242, 201, 76, 0.03) 1px, transparent 1px),
-                          linear-gradient(90deg, rgba(242, 201, 76, 0.03) 1px, transparent 1px);
+                        linear-gradient(90deg, rgba(242, 201, 76, 0.03) 1px, transparent 1px);
       background-size: 30px 30px;
       animation: gridMove 20s linear infinite;
       z-index: 0;
@@ -139,13 +138,11 @@
       100% { background-position: 30px 30px; }
     }
 
-    /* Make sure card contents stay above the moving grid */
     .card > * {
       position: relative;
       z-index: 1;
     }
 
-    /* 3D Crest Badge Frame with Eagle Animation */
     @keyframes eaglePulse {
       0% { filter: drop-shadow(0 0 10px rgba(242, 201, 76, 0.4)); }
       50% { filter: drop-shadow(0 0 25px rgba(242, 201, 76, 0.9)); }
@@ -191,7 +188,6 @@
       filter: drop-shadow(0 5px 12px rgba(0,0,0,0.9)) contrast(1.15);
     }
 
-    /* Typography */
     .user-name {
       font-size: 21px;
       font-weight: 700;
@@ -217,7 +213,6 @@
       margin-bottom: 24px;
     }
 
-    /* Primary Action Buttons */
     .primary-actions {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -281,7 +276,6 @@
       border-color: transparent;
     }
 
-    /* Social Media Grid */
     .section-label {
       font-size: 10px;
       font-weight: 700;
@@ -327,6 +321,70 @@
 
     .social-icon-btn:hover i {
       color: #030712;
+    }
+
+    /* VIP Quick Lead Box */
+    .vip-lead-box {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 22px;
+      text-align: left;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .vip-lead-box h4 {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .vip-lead-input {
+      width: 100%;
+      background: #030712;
+      border: 1px solid rgba(242, 201, 76, 0.3);
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .vip-lead-input:focus {
+      border-color: var(--gold-primary);
+    }
+
+    .vip-lead-btn {
+      width: 100%;
+      background: var(--gold-foil);
+      color: #030712;
+      border: none;
+      border-radius: 12px;
+      padding: 11px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .vip-lead-btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
     }
 
     /* Modern Portals List */
@@ -460,7 +518,7 @@
   <div class="card-wrapper">
     <div class="card">
 
-      <!-- Exact Golden Eagle Shield Logo -->
+      <!-- Golden Eagle Shield Logo -->
       <div class="logo-frame-wrapper">
         <div class="logo-frame-outer">
           <div class="logo-frame-inner">
@@ -469,57 +527,68 @@
         </div>
       </div>
 
-      <!-- Identity & Branding (Uniform Gold) -->
+      <!-- Identity & Branding -->
       <h2 class="user-name golden-text">Taha Mobeen Bhutta</h2>
       <h1 class="brand-title golden-text">Bin Taha Associates</h1>
       <p class="brand-tagline golden-text">Real Estate & Civil Construction</p>
 
       <!-- Primary Action Buttons -->
       <div class="primary-actions">
-        <a href="tel:+923219404812" class="action-btn">
+        <a href="tel:+923219404812" class="action-btn" onclick="trackInteraction('Call Clicked')">
           <div class="btn-icon"><i class="fa-solid fa-phone"></i></div>
           <span>Call</span>
         </a>
-        <a href="https://wa.me/923219404812?text=Hello%20CEO%20Taha%20Mobeen,%20I%20am%20connecting%20via%20your%20digital%20card." target="_blank" class="action-btn">
+        <a href="https://wa.me/923219404812?text=Hello%20CEO%20Taha%20Mobeen,%20I%20am%20connecting%20via%20your%20digital%20card." target="_blank" class="action-btn" onclick="trackInteraction('WhatsApp Clicked')">
           <div class="btn-icon"><i class="fa-brands fa-whatsapp"></i></div>
           <span>WhatsApp</span>
         </a>
-        <a href="mailto:bintahacrm@gmail.com" class="action-btn">
+        <a href="mailto:bintahacrm@gmail.com" class="action-btn" onclick="trackInteraction('Email Clicked')">
           <div class="btn-icon"><i class="fa-solid fa-envelope"></i></div>
           <span>Email</span>
         </a>
-        <a href="https://bintahaassociates.github.io/bintaha-main/" target="_blank" class="action-btn">
-          <div class="btn-icon"><i class="fa-solid fa-globe"></i></div>
-          <span>Portal</span>
+        <a href="https://bintahaassociates.github.io/app/" target="_blank" class="action-btn" onclick="trackInteraction('App Portal Clicked')">
+          <div class="btn-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <span>App</span>
         </a>
+      </div>
+
+      <!-- VIP Direct Inquiry Form (Direct Lead to CRM) -->
+      <div class="vip-lead-box">
+        <h4 class="golden-text"><i class="fa-solid fa-paper-plane"></i> Quick Connect with CEO</h4>
+        <input type="text" id="cardVisitorName" placeholder="Your Name" class="vip-lead-input">
+        <input type="tel" id="cardVisitorPhone" placeholder="Your Phone / WhatsApp" class="vip-lead-input">
+        <button class="vip-lead-btn" onclick="submitCardInquiry()">
+          <i class="fa-solid fa-check"></i> Send Direct Inquiry
+        </button>
       </div>
 
       <!-- Official Social Networks -->
       <div class="section-label golden-text">Official Social Networks</div>
       <div class="social-grid">
-        <a href="https://facebook.com" target="_blank" class="social-icon-btn" title="Facebook">
+        <!-- Verified Official Facebook Page Link -->
+        <a href="https://www.facebook.com/bintahaassociatesofficial" target="_blank" class="social-icon-btn" title="Facebook" onclick="trackInteraction('Facebook Clicked')">
           <i class="fa-brands fa-facebook-f"></i>
         </a>
-        <a href="https://instagram.com" target="_blank" class="social-icon-btn" title="Instagram">
+        <a href="https://instagram.com" target="_blank" class="social-icon-btn" title="Instagram" onclick="trackInteraction('Instagram Clicked')">
           <i class="fa-brands fa-instagram"></i>
         </a>
-        <a href="https://youtube.com" target="_blank" class="social-icon-btn" title="YouTube">
+        <a href="https://youtube.com" target="_blank" class="social-icon-btn" title="YouTube" onclick="trackInteraction('YouTube Clicked')">
           <i class="fa-brands fa-youtube"></i>
         </a>
-        <a href="https://tiktok.com" target="_blank" class="social-icon-btn" title="TikTok">
+        <a href="https://tiktok.com" target="_blank" class="social-icon-btn" title="TikTok" onclick="trackInteraction('TikTok Clicked')">
           <i class="fa-brands fa-tiktok"></i>
         </a>
-        <a href="https://x.com" target="_blank" class="social-icon-btn" title="X (Twitter)">
+        <a href="https://x.com" target="_blank" class="social-icon-btn" title="X (Twitter)" onclick="trackInteraction('X Clicked')">
           <i class="fa-brands fa-x-twitter"></i>
         </a>
-        <a href="https://pinterest.com" target="_blank" class="social-icon-btn" title="Pinterest">
+        <a href="https://pinterest.com" target="_blank" class="social-icon-btn" title="Pinterest" onclick="trackInteraction('Pinterest Clicked')">
           <i class="fa-brands fa-pinterest-p"></i>
         </a>
       </div>
 
       <!-- Portals & Multimedia -->
       <div class="multimedia-list">
-        <a href="https://bintahaassociates.github.io/bintaha-main/services.html" target="_blank" class="portal-link">
+        <a href="https://bintahaassociates.github.io/app/services.html" target="_blank" class="portal-link" onclick="trackInteraction('Services Portal Clicked')">
           <div class="portal-left">
             <i class="fa-solid fa-calculator"></i>
             <span>Civil Construction & CAD Hub</span>
@@ -527,7 +596,7 @@
           <i class="fa-solid fa-chevron-right golden-text" style="font-size: 11px;"></i>
         </a>
 
-        <a href="https://bintahaassociates.github.io/bintaha-main/properties.html" target="_blank" class="portal-link">
+        <a href="https://bintahaassociates.github.io/app/properties.html" target="_blank" class="portal-link" onclick="trackInteraction('Properties Hub Clicked')">
           <div class="portal-left">
             <i class="fa-solid fa-building"></i>
             <span>Properties & Flagship Listings</span>
@@ -539,11 +608,11 @@
       <!-- Dynamic QR Code -->
       <div class="qr-card">
         <div class="qr-frame">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://bintahaassociates.github.io/bintaha-main/&color=05080f" alt="Scan Card QR" />
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://bintahaassociates.github.io/digitalcard/&color=05080f" alt="Scan Card QR" />
         </div>
         <div class="qr-details">
           <h4 class="golden-text">Scan & Connect</h4>
-          <p>Scan to immediately explore listings, cost calculators and corporate portfolio.</p>
+          <p>Scan to instantly share contact details and explore properties portfolio.</p>
         </div>
       </div>
 
@@ -556,6 +625,8 @@
   </div>
 
   <script>
+    const CRM_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
+
     let fallbackIndex = 0;
     const backupPaths = ['logo.png', 'logo.png.png', '1785795993842_2.jpg', '1785795993842.jpg'];
 
@@ -566,7 +637,88 @@
       }
     }
 
+    /* SILENT DIGITAL CARD RADAR: Automatically notifies CRM that card was viewed */
+    function trackCardImpression() {
+      try {
+        const payload = {
+          id: Date.now(),
+          name: 'Digital Card Visitor',
+          phone: 'N/A (Card Tap)',
+          email: 'bintahacrm@gmail.com',
+          subject: 'NFC/Web Digital Card Viewed',
+          text: `Visitor accessed Digital Card. Screen: ${window.screen.width}x${window.screen.height}, Time: ${new Date().toLocaleTimeString()}`,
+          time: new Date().toLocaleTimeString()
+        };
+
+        fetch(CRM_WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
+      } catch(e) {}
+    }
+
+    /* Track Button Interactions */
+    function trackInteraction(actionName) {
+      try {
+        const payload = {
+          id: Date.now(),
+          name: 'Card User',
+          phone: 'N/A',
+          email: 'bintahacrm@gmail.com',
+          subject: `Digital Card: ${actionName}`,
+          text: `User triggered action: ${actionName}`,
+          time: new Date().toLocaleTimeString()
+        };
+
+        fetch(CRM_WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
+      } catch(e) {}
+    }
+
+    /* VIP Lead Submission */
+    function submitCardInquiry() {
+      const name = document.getElementById('cardVisitorName').value.trim();
+      const phone = document.getElementById('cardVisitorPhone').value.trim();
+
+      if (!name || !phone) {
+        alert('Please enter both your Name and Phone / WhatsApp number!');
+        return;
+      }
+
+      const payload = {
+        id: Date.now(),
+        name: name,
+        phone: phone,
+        email: 'bintahacrm@gmail.com',
+        subject: 'Direct Inquiry via Digital Card',
+        text: `Inquiry from Digital Card. Name: ${name}, Phone: ${phone}`,
+        time: new Date().toLocaleTimeString()
+      };
+
+      fetch(CRM_WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(() => {
+        alert('✅ Thank you! Your inquiry has been dispatched directly to CEO Taha Mobeen Bhutta.');
+        document.getElementById('cardVisitorName').value = '';
+        document.getElementById('cardVisitorPhone').value = '';
+      }).catch(() => {
+        alert('✅ Inquiry dispatched!');
+      });
+    }
+
+    /* Download VCard with Tracking */
     function saveVCard() {
+      trackInteraction('Saved Contact VCF');
+
       const vCardData = 
 `BEGIN:VCARD
 VERSION:3.0
@@ -577,7 +729,7 @@ TITLE:Chief Executive Officer - Real Estate & Civil Construction
 TEL;TYPE=CELL,VOICE:+923219404812
 TEL;TYPE=WHATSAPP,VOICE:+923219404812
 EMAIL;TYPE=PREF,INTERNET:bintahacrm@gmail.com
-URL:https://bintahaassociates.github.io/bintaha-main/
+URL:https://bintahaassociates.github.io/app/
 NOTE:Bin Taha Associates - Premium Real Estate, Civil Construction & Advisory Services, Lahore
 END:VCARD`;
 
@@ -590,6 +742,9 @@ END:VCARD`;
       downloadLink.click();
       document.body.removeChild(downloadLink);
     }
+
+    // Run silent tracker on load
+    window.addEventListener('DOMContentLoaded', trackCardImpression);
   </script>
 </body>
 </html>
