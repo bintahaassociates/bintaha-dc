@@ -12,6 +12,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <style>
     :root {
       --gold-primary: #f2c94c;
@@ -603,6 +606,15 @@
           </div>
           <i class="fa-solid fa-chevron-right golden-text" style="font-size: 11px;"></i>
         </a>
+
+        <!-- Google Review Link -->
+        <a href="https://g.page/r/CWz-AXhNPX1kEBM/review" target="_blank" class="portal-link" onclick="trackInteraction('Google Review Clicked')">
+          <div class="portal-left">
+            <i class="fa-solid fa-star golden-text"></i>
+            <span>Review Bin Taha Associates</span>
+          </div>
+          <i class="fa-solid fa-chevron-right golden-text" style="font-size: 11px;"></i>
+        </a>
       </div>
 
       <!-- Dynamic QR Code -->
@@ -625,6 +637,11 @@
   </div>
 
   <script>
+    // Supabase Cloud Configuration
+    const SUPABASE_URL = 'https://ajrvlrvnxpatbculnwil.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_ndHx-NyVhYxvDwfvBnK2iA_woPQhjJi';
+    const _supabase = (typeof supabase !== 'undefined') ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+
     const CRM_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyTd5S6F6l7X9555Hawy6PMAr0WixSXQz1sQ-fqiBQwzPQuF_Z7aZrlvHerzv6ZJBE4/exec';
 
     let fallbackIndex = 0;
@@ -637,25 +654,42 @@
       }
     }
 
-    /* SILENT DIGITAL CARD RADAR: Automatically notifies CRM that card was viewed */
+    /* SILENT DIGITAL CARD RADAR: Automatically notifies CRM & Supabase dc_card that card was viewed */
     function trackCardImpression() {
       try {
+        const timeNow = new Date().toLocaleTimeString();
         const payload = {
           id: Date.now(),
           name: 'Digital Card Visitor',
           phone: 'N/A (Card Tap)',
           email: 'bintahacrm@gmail.com',
           subject: 'NFC/Web Digital Card Viewed',
-          text: `Visitor accessed Digital Card. Screen: ${window.screen.width}x${window.screen.height}, Time: ${new Date().toLocaleTimeString()}`,
-          time: new Date().toLocaleTimeString()
+          text: `Visitor accessed Digital Card. Screen: ${window.screen.width}x${window.screen.height}, Time: ${timeNow}`,
+          time: timeNow
         };
 
+        // Google Webhook
         fetch(CRM_WEBHOOK_URL, {
           method: 'POST',
           mode: 'no-cors',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         }).catch(() => {});
+
+        // Supabase dc_card Entry
+        if (_supabase) {
+          _supabase.from('dc_card').insert([{
+            created_at: new Date().toISOString(),
+            Name: 'Digital Card Visitor',
+            Phone: 'N/A (Card Tap)',
+            CNIC: '',
+            ADRESS: `Screen: ${window.screen.width}x${window.screen.height}`,
+            Service: 'Card Impression',
+            Budget: '',
+            Details: 'NFC/Web Digital Card Viewed',
+            Date: new Date().toLocaleDateString()
+          }]).then(() => {}).catch(() => {});
+        }
       } catch(e) {}
     }
 
@@ -701,18 +735,34 @@
         time: new Date().toLocaleTimeString()
       };
 
+      // 1. Google Webhook
       fetch(CRM_WEBHOOK_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
-      }).then(() => {
-        alert('✅ Thank you! Your inquiry has been dispatched directly to CEO Taha Mobeen Bhutta.');
-        document.getElementById('cardVisitorName').value = '';
-        document.getElementById('cardVisitorPhone').value = '';
-      }).catch(() => {
-        alert('✅ Inquiry dispatched!');
-      });
+      }).catch(() => {});
+
+      // 2. Supabase dc_card Direct Insert
+      if (_supabase) {
+        _supabase.from('dc_card').insert([{
+          created_at: new Date().toISOString(),
+          Name: name,
+          Phone: phone,
+          CNIC: '',
+          ADRESS: 'Direct Inquiry Form',
+          Service: 'CEO Direct Inquiry',
+          Budget: '',
+          Details: `Inquiry from Digital Card. Name: ${name}, Phone: ${phone}`,
+          Date: new Date().toLocaleDateString()
+        }]).then(({ error }) => {
+          if (error) console.error('Supabase Error:', error);
+        }).catch(err => console.error(err));
+      }
+
+      alert('✅ Thank you! Your inquiry has been dispatched directly to CEO Taha Mobeen Bhutta.');
+      document.getElementById('cardVisitorName').value = '';
+      document.getElementById('cardVisitorPhone').value = '';
     }
 
     /* Download VCard with Tracking */
